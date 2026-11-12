@@ -39,3 +39,7 @@ svg{width:16px;height:16px;display:block;flex:none}[data-icon]{display:inline-fl
 .right-tabs>button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .right-tabs>button svg{display:block;flex:none}
 @media(max-width:1150px){.right-tabs>button{padding-inline:5px}.right-tabs.is-compact>button{padding-inline:6px}}
+
+/* The mascot belongs to the conversation, below its header. */
+.right-panel>.right-tabs{margin-top:12px}
+.chat-messages>.wana-header{margin:0 12px 2px}

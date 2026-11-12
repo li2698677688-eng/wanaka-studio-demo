@@ -12,4 +12,4 @@
 
 页面文件：`index.html`、`styles.css`、`app.js` 与 `assets/`。Inter 字体许可证见 `assets/Inter-LICENSE.txt`。
 
-右栏 Wana 状态卡片对应 [Figma 49905:5040](https://www.figma.com/design/PWtgAaGdl6znpuQykrnIbb/Wanaka-Studio?node-id=49905-5040)：横向布局、50px 动画头像、12px 间距、8px/12px 内边距、20px 圆角、#252525 背景；名称与状态使用已确认的 Inter 14px/21px、400 字重。保留本地动画及就绪／完成绿色，工作状态文字为白色 40%。A/B 共用同一结构。
+右栏 Wana 状态卡片对应 [Figma 49905:5040](https://www.figma.com/design/PWtgAaGdl6znpuQykrnIbb/Wanaka-Studio?node-id=49905-5040)：横向布局、50px 动画头像、12px 间距、8px/12px 内边距、20px 圆角、#252525 背景；名称与状态使用已确认的 Inter 14px/21px、400 字重。保留本地动画及就绪／完成绿色，工作状态文字为白色 40%。A/B 共用同一结构。状态卡片仅在聊天区域显示，位于会话标题下、消息流顶部；其他页签不占位，切换时保留同一动画与状态节点。
