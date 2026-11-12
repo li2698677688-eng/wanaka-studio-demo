@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wanaka Studio · 工具面板交互 Demo</title>
+  <meta name="description" content="对比自定义工具面板的右侧收纳与自由停靠两种交互。独立演示，无需登录。">
+  <link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+</head>
+<body>
+<div id="app" class="editor" data-mode="tabs">
+  <header class="topbar">
+    <button class="icon-button home-button" data-action="help" aria-label="演示说明" title="演示说明"><span data-icon="home"></span></button>
+    <div id="playback-controls" class="playback-controls"></div>
+    <label class="demo-switch"><span>方案</span><select id="layout-mode" aria-label="切换交互方案"><option value="tabs">A · 右侧统一收纳</option><option value="docking">B · 自由停靠</option></select></label>
+    <div class="mode-toggle" aria-label="编辑器模式"><button data-action="build"><span data-icon="cube"></span>构建</button><button class="active" data-action="preview"><span data-icon="eye"></span>预览</button></div>
+    <div id="top-tools" class="project-tools" aria-label="自定义工具"></div>
+    <div class="topbar-end"><span class="demo-badge">交互演示</span><button class="icon-button" data-action="reset-demo" aria-label="重置演示" title="重置演示"><span data-icon="reset"></span></button><button class="icon-button" data-action="help" aria-label="帮助" title="帮助"><span data-icon="help"></span></button></div>
+  </header>
+  <main id="workspace" class="workspace">
+    <nav class="left-rail" aria-label="编辑器导航"><button class="rail-button active" data-action="scene-info"><span data-icon="cube"></span><span>场景</span></button><button class="rail-button" data-action="add-tool"><span data-icon="plus"></span><span>创建</span></button><button class="rail-button" data-action="open-weather"><span data-icon="sun"></span><span>视觉</span></button><button class="rail-button" data-action="open-tools"><span data-icon="wrench"></span><span>工具</span></button><button class="rail-button rail-bottom" data-action="help"><span data-icon="help"></span></button></nav>
+    <section id="dock-left" class="tool-dock" aria-label="左侧停靠工具"></section>
+    <section id="scene" class="scene" aria-label="游戏场景示意图">
+      <img class="scene-image" src="assets/meadow.png" alt="绿色草地上的角色与发光星星，作为工具面板交互演示背景">
+      <div id="weather-overlay" class="weather-overlay"></div>
+      <div class="scene-hud"><span class="hud-eyebrow">THEME QA MEADOW</span><strong><span class="star">★</span> <span id="score">2 / 5</span> <small>STARS</small></strong><div class="hud-progress"><i id="score-progress"></i></div><span>Collect all five glowing stars</span></div>
+      <button class="scene-reset" data-action="restart"><span data-icon="reset"></span>Reset run</button>
+      <div id="scene-marker" class="scene-marker" hidden><span data-icon="flag"></span><span></span></div>
+      <div id="pause-overlay" class="pause-overlay" hidden><span data-icon="pause"></span><span>演示已暂停</span><button data-action="pause">继续预览</button></div>
+      <div id="finish-overlay" class="finish-overlay" hidden><span data-icon="check"></span><h2>巡检完成</h2><p>这是结束界面的交互示例</p><button data-action="close-finish">返回场景</button></div>
+      <div class="scene-bottom"><span id="scene-mode-caption">场景示意 · 拖动面板不会改变游戏内容</span></div>
+    </section>
+    <section id="dock-right" class="tool-dock" aria-label="右侧停靠工具"></section>
+    <section id="dock-bottom" class="tool-dock" aria-label="底部停靠工具"></section>
+    <aside class="right-panel">
+      <div class="wana-header"><img id="wana-avatar" src="assets/wana-complete.webp" alt="Wana"><span>Wana</span><span id="wana-status" class="wana-status"><span data-icon="check"></span>就绪</span></div>
+      <div class="right-tabs" role="tablist" aria-label="编辑面板"><button role="tab" data-tab="chat"><span data-icon="chat"></span>AI 聊天</button><button role="tab" data-tab="parameters"><span data-icon="sliders"></span>游戏参数</button><button role="tab" data-tab="tools" class="active"><span data-icon="wrench"></span>调试工具</button><button role="tab" data-tab="properties"><span data-icon="panel"></span>属性</button></div>
+      <div id="right-content" class="panel-content"></div>
+    </aside>
+  </main>
+  <div id="floating-layer"></div><div id="panel-parking" hidden></div><div id="dock-preview" class="dock-preview" hidden><span></span></div>
+  <button id="popover-backdrop" class="popover-backdrop" aria-label="关闭更多操作" hidden></button><div id="playback-popover" class="playback-popover" hidden></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <dialog id="help-dialog" class="help-dialog"><button class="icon-button dialog-close" data-action="close-help" aria-label="关闭"><span data-icon="close"></span></button><span class="demo-badge">交互演示</span><h1>选一种更顺手的工具布局</h1><p><strong>A · 右侧统一收纳</strong><br>全部自定义工具收进右侧，通过下拉列表切换。</p><p><strong>B · 自由停靠</strong><br>顶部集中打开工具；拖动标题栏到场景左侧、右侧或底部，松手停靠。点击面板右上角的悬浮图标，即可恢复浮窗。</p><p>也可以在 AI 聊天里输入一个工具名称，体验新增面板。这里使用本地模拟反馈，没有接入真实 AI、后台或可玩的 3D 游戏。</p><button class="primary-button" data-action="close-help">开始体验</button></dialog>
+</div>
+</body>
+</html>
