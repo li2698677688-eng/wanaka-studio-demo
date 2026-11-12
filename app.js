@@ -53,7 +53,7 @@
   function feedback(tool,text){tool.feedback=text;$('.tool-feedback',tool.node).textContent=text;}
   function setReadout(name,text){document.querySelectorAll(`[data-readout="${name}"]`).forEach(node=>node.textContent=text);}
   function updateScene(){ $('#score').textContent=`${state.score} / 5`;$('#score-progress').style.width=`${state.score*20}%`;setReadout('score',`${state.score} / 5`);$('#pause-overlay').hidden=state.running&&!state.paused;$('#pause-overlay > span:last-of-type').textContent=state.running?'演示已暂停':'预览已停止';const weather={晴天:[1,'none'],阴天:[.7,'saturate(.6)'],傍晚:[.85,'sepia(.4)'],夜晚:[.35,'saturate(.6) hue-rotate(15deg)']}[state.weather];$('.scene-image').style.filter=`brightness(${weather[0]*state.intensity}) ${weather[1]==='none'?'':weather[1]}`;setReadout('weather',state.weather); }
-  function positionFloat(tool){tool.node.classList.remove('docked');tool.node.style.left=`tool.x}px`;tool.node.style.top=`tool.y}px`;tool.node.style.width='340px';tool.node.style.height='';tool.node.style.zIndex=String(++state.z);tool.node.dataset.docked='false';}
+  function positionFloat(tool){tool.node.classList.remove('docked');tool.node.style.left=`${tool.x}px`;tool.node.style.top=`${tool.y}px`;tool.node.style.width='340px';tool.node.style.height='';tool.node.style.zIndex=String(++state.z);tool.node.dataset.docked='false';}
   function renderToolLayout(){
     const parking=$('#panel-parking'),floating=$('#floating-layer');state.tools.forEach(tool=>{parking.append(tool.node);tool.node.hidden=false;});floating.replaceChildren();
     const zones=['left','right','bottom'];zones.forEach(zone=>$('#dock-'+zone).replaceChildren());
