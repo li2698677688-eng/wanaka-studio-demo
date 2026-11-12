@@ -84,8 +84,8 @@
     bar.classList.toggle('is-compact',needed>bar.clientWidth-4);
   }
   function renderRightTabs(){
-    const entries=[{id:'chat',label:'AI 聊天',glyph:'chat'},{id:'parameters',label:'游戏参数',glyph:'sliders'},...(state.mode==='tabs'?state.tools.map(tool=>({id:'tools',toolId:tool.id,label:tool.title,glyph:tool.glyph})):[]),{id:'properties',label:'属性',glyph:'panel'}];
-    $('.right-tabs').innerHTML=entries.map(entry=>{const active=entry.id===state.tab&&(!entry.toolId||entry.toolId===state.selected);return `<button id="right-tab-${entry.toolId||entry.id}" role="tab" data-tab="${entry.id}" ${entry.toolId?`data-tool-tab="${entry.toolId}"`:''} aria-label="${escapeHtml(entry.label)}" title="${escapeHtml(entry.label)}" aria-controls="right-content" aria-selected="${active}" tabindex="${active?0:-1}" class="${active?'active':''}">${icon(entry.glyph)}<span class="tab-text">${escapeHtml(entry.label)}</span></button>`;}).join('')+`<button class="icon-button" data-action="add-tool" aria-label="添加工具" title="添加工具">${icon('plus')}</button>`;
+    const entries=[{id:'chat',label:'AI 聊天',glyph:'chat'},...(state.mode==='tabs'?[{id:'parameters',label:'游戏参数',glyph:'sliders'},...state.tools.map(tool=>({id:'tools',toolId:tool.id,label:tool.title,glyph:tool.glyph}))]:[]),{id:'properties',label:'属性',glyph:'panel'}];
+    $('.right-tabs').innerHTML=entries.map(entry=>{const active=entry.id===state.tab&&(!entry.toolId||entry.toolId===state.selected);return `<button id="right-tab-${entry.toolId||entry.id}" role="tab" data-tab="${entry.id}" ${entry.toolId?`data-tool-tab="${entry.toolId}"`:''} aria-label="${escapeHtml(entry.label)}" title="${escapeHtml(entry.label)}" aria-controls="right-content" aria-selected="${active}" tabindex="${active?0:-1}" class="${active?'active':''}">${icon(entry.glyph)}<span class="tab-text">${escapeHtml(entry.label)}</span></button>`;}).join('')+(state.mode==='tabs'?`<button class="icon-button" data-action="add-tool" aria-label="添加工具" title="添加工具">${icon('plus')}</button>`:'');
     fitRightTabs();
   }
   function selectRightTab(tab){state.tab=tab.dataset.tab;if(tab.dataset.toolTab)state.selected=tab.dataset.toolTab;renderRight();}
