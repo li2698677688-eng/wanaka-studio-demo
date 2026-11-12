@@ -28,3 +28,14 @@ svg{width:16px;height:16px;display:block;flex:none}[data-icon]{display:inline-fl
 @media(min-width:1700px){.wana-header{height:150px}.playback-controls{gap:8px}}
 @media(max-width:1150px){.demo-badge{font-size:9px}.playback-controls{gap:4px}.playback-controls button{font-size:10px;padding-inline:6px}.volume-control{gap:6px;padding-inline:6px}.volume-control input[type=range]{width:57px}.topbar .mode-toggle button{width:58px}}
 @media(max-width:760px){.wana-header{height:75px;flex-direction:row;gap:9px}.wana-header img{width:55px;height:55px}.playback-controls{max-width:100%;overflow:auto}.volume-control input[type=range]{width:45px}.topbar .mode-toggle{margin-left:auto}.topbar .demo-switch{order:3}.topbar .project-tools{order:5}.right-panel .panel-content:has(.chat-composer){min-height:360px}.scene-hud{max-width:190px}.scene-hud strong{font-size:22px}.scene-hud .star{font-size:20px}.scene-reset{top:10px;right:10px;padding:6px 8px;font-size:10px}}
+/* Unified tool tabs: labels give way to icons before the rail needs scrolling. */
+.right-tabs{overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;flex-wrap:nowrap}
+.right-tabs>button{flex:1 0 auto;min-width:32px;max-width:none;padding-inline:7px;white-space:nowrap}
+.right-tabs>button .tab-text{display:inline;white-space:nowrap}
+.right-tabs>button[data-action=add-tool]{flex:0 0 28px;min-width:28px;width:28px;padding-inline:4px}
+.right-tabs.is-compact>button{flex:1 0 32px;min-width:32px;padding-inline:6px;gap:0}
+.right-tabs.is-compact>button .tab-text{display:none}
+.right-tabs.is-compact>button[data-action=add-tool]{flex:0 0 28px;min-width:28px}
+.right-tabs>button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.right-tabs>button svg{display:block;flex:none}
+@media(max-width:1150px){.right-tabs>button{padding-inline:5px}.right-tabs.is-compact>button{padding-inline:6px}}
